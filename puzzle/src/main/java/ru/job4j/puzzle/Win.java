@@ -2,15 +2,14 @@ package ru.job4j.puzzle;
 
 public class Win {
     public static boolean check(int[][] board) {
-        boolean rsl = true;
+        boolean rsl = false;
         int[] diagonal = extractDiagonal(board);
         for (int i = 0; i < board.length ; i++) {
             if (diagonal[i] == 1) {
                 if (checkHorizontal(board, i) || checkVertical(board, i)) {
-                    return rsl;
+                     rsl = true;
+                     break;
                 }
-                rsl = false;
-                break;
             }
         }
         return rsl;
