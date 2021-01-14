@@ -12,41 +12,32 @@ public class LogicTest {
     public void whenMove()
             throws FigureNotFoundException, OccupiedCellException, ImpossibleMoveException {
         Logic logic = new Logic();
-        BishopBlack  bishop = new BishopBlack(Cell.C1);
-        logic.add(bishop);
-        Cell dest = Cell.H6;
-        logic.move(bishop.position(), dest);
+        logic.add(new BishopBlack(Cell.C1));
+        logic.move(Cell.C1, Cell.H6);
     }
 
     @Test(expected = ImpossibleMoveException.class)
     public void whenMoveImposs()
             throws FigureNotFoundException, OccupiedCellException, ImpossibleMoveException {
         Logic logic = new Logic();
-        BishopBlack  bishop = new BishopBlack(Cell.C1);
-        logic.add(bishop);
-        Cell dest = Cell.H7;
-        logic.move(bishop.position(), dest);
+        logic.add(new BishopBlack(Cell.C1));
+        logic.move(Cell.C1, Cell.H7);
     }
 
     @Test(expected = OccupiedCellException.class)
     public void whenOccupied()
             throws FigureNotFoundException, OccupiedCellException, ImpossibleMoveException {
         Logic logic = new Logic();
-        BishopBlack  bishopFirst = new BishopBlack(Cell.C1);
-        BishopBlack  bishopSecond = new BishopBlack(Cell.E3);
-        logic.add(bishopFirst);
-        logic.add(bishopSecond);
-        Cell dest = Cell.H6;
-        logic.move(bishopFirst.position(), dest);
+        logic.add(new BishopBlack(Cell.C1));
+        logic.add(new BishopBlack(Cell.E3));;
+        logic.move(Cell.C1, Cell.H6);
     }
 
     @Test(expected = FigureNotFoundException.class)
     public void whenNotFound()
             throws FigureNotFoundException, OccupiedCellException, ImpossibleMoveException {
         Logic logic = new Logic();
-        BishopBlack  bishopFirst = new BishopBlack(Cell.C1);
-        logic.add(bishopFirst);
-        Cell dest = Cell.H6;
-        logic.move(Cell.E1, dest);
+        logic.add(new BishopBlack(Cell.C1));
+        logic.move(Cell.E1, Cell.H6);
     }
 }
